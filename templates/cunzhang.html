@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<textarea id="content"></textarea>
+<input type="submit" id="btn" value="提交" onclick="submitContent();">
+
+<script src="/static/plugins/kindeditor/kindeditor-all-min.js"></script>
+<script src="/static/js/jquery-1.12.4.js"></script>
+
+<script>
+
+
+    var editor = null;
+
+    KindEditor.ready(function (K) {
+        editor = K.create(
+            '#content',
+            {
+                resizeType: 2,
+                allowPreviewEmoticons: true,
+                allowImageUpload: true,
+                items: [
+                    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+                uploadJson: '/laocunzhang.html',
+                //filePostName: 'xxoo'
+
+            }
+        );
+    });
+
+    function submitContent() {
+        var ServiceFeatures = editor.html();
+
+        console.log(ServiceFeatures);
+
+
+        $.ajax({
+            url: '/loadeditor',
+            type: 'POST',
+            //data: $('#fm').serialize(),
+            data:{id:ServiceFeatures},
+            dataType: 'JSON',
+            success: function (arg) {
+                if (arg.status) {
+
+                    alert("OK")
+                    //location.href = '/'
+                } else {
+{#                    $msg.parent().removeClass('hide');#}
+{#                    $msg.text(arg.message);#}
+{#                    var img = $('#check_code_img')[0];#}
+{#                    img.src = img.src + '?';#}
+{#                    $('#password,#check_code').val('');#}
+                }
+
+            }
+        })
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/static/css/edmure.css"/>
+    <link rel="stylesheet" href="/static/css/commons.css"/>
+    <link rel="stylesheet" href="/static/css/account.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="register">
+    <div style="font-size: 25px; font-weight: bold;text-align: center;">
+        用户注册
+    </div>
+    <form role="form" method="post" action="/register.html">
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"><span style="color: red">{{ form.errors.username.0 }}</span>
+        </div>
+        <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="邮箱">
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+
+        </div>
+        <div class="form-group">
+            <label for="confirm_pwd">确认密码</label>
+            <input type="password" class="form-control" id="confirm_pwd" name="confirm_pwd" placeholder="请重新输入密码">
+            <span style="color: red">{{ form.non_field_errors.0 }}</span>
+        </div>
+
+        <div class="form-group">
+            <label for="check_code">验证码</label>
+
+            <div class="row">
+                <div class="col-xs-7">
+                    <input type="password" class="form-control" id="check_code" name="check_code" placeholder="请输入验证码">
+                </div>
+                <div class="col-xs-5">
+                    <img src="/check_code.html">
+                </div>
+            </div>
+
+        </div>
+
+        <input type="submit" class="btn btn-default" value="下一步"/>
+    </form>
+</div>
+</body>
+</html>
