@@ -148,3 +148,27 @@ class Article2Tag(models.Model):
             ('article', 'tag'),
         ]
 
+
+
+class Trouble(models.Model):
+    title = models.CharField(max_length=32)
+    detail = models.TextField()
+    user = models.ForeignKey(UserInfo,related_name='u')
+    # ctime = models.CharField(max_length=32) # 1491527007.452494
+    ctime = models.DateTimeField()
+    status_choices = (
+        (1,'未处理'),
+        (2,'处理中'),
+        (3,'已处理'),
+    )
+    status = models.IntegerField(choices=status_choices,default=1)
+
+    processer = models.ForeignKey(UserInfo,related_name='p',null=True,blank=True)
+    solution = models.TextField(null=True)
+    ptime = models.DateTimeField(null=True)
+    pj_choices = (
+        (1, '不满意'),
+        (2, '一般'),
+        (3, '活很好'),
+    )
+    pj = models.IntegerField(choices=pj_choices,null=True,default=2)

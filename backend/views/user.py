@@ -3,7 +3,7 @@ from django.shortcuts import render
 from repository import models
 from utils.pagination import Pagination
 from django.urls import reverse
-from .auth import auth
+from ..auth import auth
 
 # Create your views here.
 
